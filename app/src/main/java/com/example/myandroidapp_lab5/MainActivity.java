@@ -37,20 +37,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Create the notification channel.
         createNotificationChannel();
 
-        // Register the broadcast receiver to receive the update action from
-        // the notification.
         registerReceiver(mReceiver,
                 new IntentFilter(ACTION_UPDATE_NOTIFICATION));
 
-        // Add onClick handlers to all the buttons.
         button_notify = findViewById(R.id.notify);
         button_notify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Send the notification
+
                 sendNotification();
             }
         });
@@ -59,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         button_update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Update the notification.
+
                 updateNotification();
             }
         });
@@ -72,9 +68,6 @@ public class MainActivity extends AppCompatActivity {
                 cancelNotification();
             }
         });
-
-        // Reset the button states. Enable only Notify button and disable
-        // update and cancel buttons.
         setNotificationButtonState(true,false,false);
     }
 
